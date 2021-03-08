@@ -23,7 +23,7 @@
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # check arguments
-if [ -z "$1" ]; then
+if [ $# != 1 ]; then
 	echo "Usage: curseforge-modpack-downloader manifest.json"
 	exit 1
 fi
@@ -31,7 +31,7 @@ fi
 # check dependencies
 for prog in jq wget; do
     if ! command -v "$prog" > /dev/null 2>&1; then
-        echo "$prog is not detected"; exit 1
+        echo "$prog is not detected" 1>&2; exit 1
     fi
 done
 
